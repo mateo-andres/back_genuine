@@ -2,6 +2,8 @@ from fastapi import APIRouter, HTTPException
 from config.db import db_dependency
 from models.staff import Staff
 from schemas import StaffBase
+from config.auth import get_current_user
+from fastapi import Depends
 
 staff_router = APIRouter()
 
@@ -14,7 +16,7 @@ async def create_staff(db: db_dependency, staff: StaffBase) -> StaffBase:
     return new_staff
 
 @staff_router.get("/staff" ,tags=["staff"])
-async def get_staff(db: db_dependency) -> list[StaffBase]:
+async def get_staff(db: db_dependency, current_user=Depends(get_current_user)) -> list[StaffBase]:
     staff = db.query(Staff).filter(Staff.is_active == True).all()
     return staff
 
