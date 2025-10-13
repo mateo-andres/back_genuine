@@ -10,7 +10,11 @@ from routes.metrics import metrics_router
 from config.auth import login_router
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+app = FastAPI(
+    title="Back Genuine - Educational Management System API",
+    description="A RESTful API built with FastAPI for managing students, staff, and educational operations. This backend system provides comprehensive endpoints for educational institutions to manage their core operations including student enrollment, staff management, marketing, commercial activities, and metrics tracking.",
+    version="1.0.0"
+)
 
 origins = [
     "http://localhost:5173",
