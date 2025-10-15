@@ -39,7 +39,7 @@ app.include_router(login_router)
 
 @app.get("/", tags=["test"])
 async def root():
-    return {"message": "Hello World", "url": os.getenv("DB_URL") or "No DB URL"}
+    return {"message": "Hello World"}
 
 
 if __name__ == "__main__":
